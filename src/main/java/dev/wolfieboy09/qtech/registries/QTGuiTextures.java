@@ -5,8 +5,6 @@ import dev.wolfieboy09.qtech.api.annotation.NothingNullByDefault;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.function.Consumer;
-
 @NothingNullByDefault
 public enum QTGuiTextures {
     DISK_ASSEMBLER_GUI("disk_assembler", 256, 256),
