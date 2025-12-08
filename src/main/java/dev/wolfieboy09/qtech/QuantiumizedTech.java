@@ -62,6 +62,7 @@ public class QuantiumizedTech {
         // Register before neoforge because wiki says so
         modEventBus.addListener(EventPriority.HIGH, QTEvents::registerRegistries);
         modEventBus.addListener(QTEvents::particle);
+        NeoForge.EVENT_BUS.addListener(QTEvents::onDimensionChange);
         //modEventBus.register(QTClientEvents.class);
 
         // Check to see if CC: Tweaked is present when mod loading, and register the peripherals there
