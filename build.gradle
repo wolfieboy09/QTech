@@ -108,22 +108,17 @@ repositories {
 }
 
 dependencies {
-    implementation "curse.maven:cc-tweaked-282001:5714512"
+    compileOnly "curse.maven:cc-tweaked-282001:5714512"
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
 
     implementation "curse.maven:jade-324717:6291517"
 
-
     api("dev.latvian.mods:kubejs-neoforge:$kubejs_version") { transitive = false }
     api("dev.latvian.mods:rhino:$rhino_version")
     interfaceInjectionData("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
 
-
-    localRuntime "mekanism:Mekanism:${minecraft_version}-${mekanism_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-
-
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
