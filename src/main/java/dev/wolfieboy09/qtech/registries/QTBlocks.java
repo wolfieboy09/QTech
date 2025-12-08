@@ -90,6 +90,8 @@ public class QTBlocks {
 
     public static final DeferredBlock<TransparentBlock> CLEANROOM_GLASS = registerBasicTransparentBlock("cleanroom_glass");
 
+    public static final DeferredBlock<Block> NULLSTONE = registerBlock("nullstone", Block::new);
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, () -> block.apply(BlockBehaviour.Properties.of()));
         registerBlockItem(name, toReturn);
