@@ -1,0 +1,11 @@
+{
+  "type": "qtech:nullzone",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "qtech:nullzone"
+    },
+    "settings": "qtech:nullzone"
+  }
+}
