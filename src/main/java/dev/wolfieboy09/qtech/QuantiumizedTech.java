@@ -62,6 +62,8 @@ public class QuantiumizedTech {
         // Register before neoforge because wiki says so
         modEventBus.addListener(EventPriority.HIGH, QTEvents::registerRegistries);
         modEventBus.addListener(QTEvents::particle);
+        modEventBus.addListener(QTEvents::registerCustomDimensionEffects);
+
         NeoForge.EVENT_BUS.addListener(QTEvents::onDimensionChange);
         //modEventBus.register(QTClientEvents.class);
 

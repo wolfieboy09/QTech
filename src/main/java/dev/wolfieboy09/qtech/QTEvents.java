@@ -1,6 +1,7 @@
 package dev.wolfieboy09.qtech;
 
 import dev.wolfieboy09.qtech.api.registry.QTRegistries;
+import dev.wolfieboy09.qtech.dimensions.NullZoneSpecialEffects;
 import dev.wolfieboy09.qtech.particles.GasParticleProvider;
 import dev.wolfieboy09.qtech.registries.QTDimensions;
 import dev.wolfieboy09.qtech.registries.QTItems;
@@ -9,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.event.entity.EntityTravelToDimensionEvent;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -24,6 +26,10 @@ public class QTEvents {
 
     public static void particle(@NotNull RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(QTParticleTypes.GAS_PARTICLE.get(), GasParticleProvider::new);
+    }
+
+    public static void registerCustomDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
+        event.register(QTDimensions.NULLZONE_LOCATION, new NullZoneSpecialEffects());
     }
 
     //TODO Maybe use a datamap instead...
