@@ -47,9 +47,11 @@ public class QTEvents {
 
             // Backpacks and other containers also need to be searched. (What can go wrong...)
             // Nothing is safe.
-            if (stack.getCapability(Capabilities.ItemHandler.ITEM) != null) {
-                searchItemContents(inventory);
+            IItemHandler nestedInventory = stack.getCapability(Capabilities.ItemHandler.ITEM);
+            if (nestedInventory != null) {
+                searchItemContents(nestedInventory);
             }
+
             interchangeItem(inventory, i);
         }
     }
