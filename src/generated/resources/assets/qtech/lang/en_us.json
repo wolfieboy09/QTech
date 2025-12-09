@@ -60,6 +60,7 @@
   "multiblock.qtech.formed": "Multiblock Formed",
   "multiblock.qtech.unformed": "Multiblock Not Formed",
   "qtech.configuration.renderFluidOnSmeltery": "Render fluid on Smeltery",
+  "qtech.ender_chest_fail": "This ender chest does not seem to work here...",
   "qtech.gas_canister.contains_gas": "Storing §e%s§r",
   "qtech.gas_canister.shifted_info": "Supports containing gasses inside the container",
   "qtech.oxygen_deprivation": "%s could not breath on land",

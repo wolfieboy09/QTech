@@ -9,7 +9,7 @@
     "defaultRequire": 1
   },
   "mixins": [
-
+    "EnderChestMixin"
   ],
   "plugin": "dev.wolfieboy09.qtech.mixins.MixinPlugin"
 }
