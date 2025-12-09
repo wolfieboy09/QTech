@@ -17,7 +17,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -102,10 +104,11 @@ public final class GasMethods extends AbstractGasMethods<IGasHandler> {
         return object instanceof IGasHandler handler ? handler : null;
     }
 
-    private static Map<String, ?> detailForGas(GasStack stack) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", stack.getGas().getResourceLocation().toString());
-        map.put("amount", stack.getAmount());
-        return map;
+    @Contract("_ -> new")
+    private static @Unmodifiable Map<String, ?> detailForGas(GasStack stack) {
+        return Map.of(
+                "name", stack.getGas().getResourceLocation().toString(),
+                "amount", stack.getAmount()
+        );
     }
 }
