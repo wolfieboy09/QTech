@@ -1,0 +1,7 @@
+{
+  "values": {
+    "minecraft:ender_pearl": {
+      "replaceable": "qtech:broken_ender_pearl"
+    }
+  }
+}
