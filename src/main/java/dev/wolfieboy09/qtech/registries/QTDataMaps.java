@@ -1,5 +1,6 @@
 package dev.wolfieboy09.qtech.registries;
 
+import dev.wolfieboy09.qtech.api.datamaps.NullZoneReplaceable;
 import dev.wolfieboy09.qtech.api.datamaps.SmelteryFuel;
 import dev.wolfieboy09.qtech.api.util.ResourceHelper;
 import net.minecraft.core.registries.Registries;
@@ -30,8 +31,15 @@ public class QTDataMaps {
             true
     ).build();
 
+    public static final DataMapType<Item, NullZoneReplaceable> NULL_ZONE_REPLACEABLE = DataMapType.builder(
+            ResourceHelper.asResource("nullzone_replaceable"),
+            Registries.ITEM,
+            NullZoneReplaceable.CODEC
+    ).build();
+
     public static void register(@NotNull RegisterDataMapTypesEvent event) {
         event.register(SMELTERY_FUEL_ITEM);
         event.register(SMELTERY_FUEL_FLUID);
+        event.register(NULL_ZONE_REPLACEABLE);
     }
 }
