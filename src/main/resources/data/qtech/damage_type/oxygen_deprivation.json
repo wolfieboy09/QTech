@@ -1,5 +1,5 @@
 {
-  "message_id": "death.qstorage.oxygen_deprivation",
+  "message_id": "qtech.oxygen_deprivation",
   "scaling": "never",
   "exhaustion": 0.5,
   "effects": "hurt",
