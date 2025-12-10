@@ -8,9 +8,7 @@ import dev.wolfieboy09.qtech.client.ClientReloadListener;
 import dev.wolfieboy09.qtech.client.KeyInputHandler;
 import dev.wolfieboy09.qtech.component.QTDataComponents;
 import dev.wolfieboy09.qtech.config.ClientConfig;
-import dev.wolfieboy09.qtech.integration.cctweaked.CCTweakedPlugin;
-import dev.wolfieboy09.qtech.integration.kubejs.events.KubeEventHandlers;
-import dev.wolfieboy09.qtech.integration.kubejs.gas.KubeJSGasIngredients;
+import dev.wolfieboy09.qtech.integration.IntegrationLoader;
 import dev.wolfieboy09.qtech.registries.*;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -18,7 +16,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.LoadingModList;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
@@ -63,19 +60,12 @@ public class QuantiumizedTech {
         modEventBus.addListener(EventPriority.HIGH, QTEvents::registerRegistries);
         modEventBus.addListener(QTEvents::particle);
         modEventBus.addListener(QTEvents::registerCustomDimensionEffects);
+        NeoForge.EVENT_BUS.addListener(QTEvents::preventEnderPearlInNullZone);
 
         NeoForge.EVENT_BUS.addListener(QTEvents::onDimensionChange);
         //modEventBus.register(QTClientEvents.class);
 
-        // Check to see if CC: Tweaked is present when mod loading, and register the peripherals there
-        if (LoadingModList.get().getModFileById("computercraft") != null) {
-            CCTweakedPlugin.register();
-        }
-
-        if (LoadingModList.get().getModFileById("kubejs") != null) {
-            KubeJSGasIngredients.register(modEventBus);
-            modEventBus.register(KubeEventHandlers.class);
-        }
+        new IntegrationLoader().init(modEventBus);
 
         modEventBus.addListener(QTDataMaps::register);
 
