@@ -12,8 +12,8 @@
   "fixed_time": 0,
   "logical_height": 0,
   "infiniburn": "#qtech:nullzone_infiniburn",
-  "min_y": -64,
-  "height": 320,
+  "min_y": 0,
+  "height": 256,
   "monster_spawn_light_level": 0,
   "monster_spawn_block_light_limit": 0
 }

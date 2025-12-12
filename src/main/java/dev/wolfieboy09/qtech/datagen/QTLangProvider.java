@@ -64,7 +64,10 @@ public class QTLangProvider extends LanguageProvider {
 
         toGenerate.put("cleanroom.qtech.condition", "Condition: %s");
         toGenerate.put("qtech.recipe.processing.chance", "%1$s%% Chance");
-        toGenerate.put("qtech.ender_chest_fail", "This ender chest does not seem to work here...");
+        toGenerate.put("qtech.ender_chest_fail", "This ender chest seems to be sealed shut");
+
+        toGenerate.put("death.attack.qtech.nullzone_pearl_thrown.message", "%s threw an ender pearl in the Null Zone");
+        toGenerate.put("death.attack.qtech.oxygen_deprivation", "%s couldn't breath on land");
 
         for (CleanroomCondition condition : CleanroomCondition.values()) {
             toGenerate.put(condition.getTranslationKey(), NamingUtil.toHumanReadable(condition.getSerializedName()));

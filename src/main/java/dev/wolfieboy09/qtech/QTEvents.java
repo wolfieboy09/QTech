@@ -3,15 +3,19 @@ package dev.wolfieboy09.qtech;
 import dev.wolfieboy09.qtech.api.annotation.NothingNullByDefault;
 import dev.wolfieboy09.qtech.api.datamaps.NullZoneReplaceable;
 import dev.wolfieboy09.qtech.api.registry.QTRegistries;
+import dev.wolfieboy09.qtech.api.util.QTUtil;
 import dev.wolfieboy09.qtech.dimensions.NullZoneSpecialEffects;
 import dev.wolfieboy09.qtech.particles.GasParticleProvider;
+import dev.wolfieboy09.qtech.registries.QTDamageTypes;
 import dev.wolfieboy09.qtech.registries.QTDataMaps;
 import dev.wolfieboy09.qtech.registries.QTDimensions;
 import dev.wolfieboy09.qtech.registries.QTParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import net.neoforged.neoforge.event.entity.EntityTravelToDimensionEvent;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
@@ -30,6 +34,15 @@ public class QTEvents {
 
     public static void registerCustomDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
         event.register(QTDimensions.NULLZONE_LOCATION, new NullZoneSpecialEffects());
+    }
+
+    // If the ender pearl is removed from the data map, still prevent it anyway
+    // Also good for if you somehow snuggled one into the dimension
+    public static void preventEnderPearlInNullZone(EntityTeleportEvent.EnderPearl event) {
+        if (event.getPearlEntity().level().dimension() == QTDimensions.NULLZONE) {
+            event.setCanceled(true);
+            event.getEntity().hurt(new DamageSource(QTUtil.damageTypeHolder(event.getEntity().level(), QTDamageTypes.NULLZONE_PEARL_THROWN), event.getEntity(), null, null), 2f);
+        }
     }
 
     public static void onDimensionChange(EntityTravelToDimensionEvent event) {

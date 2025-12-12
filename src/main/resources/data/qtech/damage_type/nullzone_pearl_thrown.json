@@ -1,0 +1,7 @@
+{
+  "message_id": "qtech.nullzone_pearl_thrown",
+  "scaling": "never",
+  "exhaustion": 0.1,
+  "effects": "hurt",
+  "death_message_type": "intentional_game_design"
+}

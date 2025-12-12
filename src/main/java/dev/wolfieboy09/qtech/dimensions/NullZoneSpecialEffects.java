@@ -6,12 +6,13 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 
 @NothingNullByDefault
 public class NullZoneSpecialEffects extends DimensionSpecialEffects {
     public NullZoneSpecialEffects() {
-        super(0, false, SkyType.NONE, true, true);
+        super(Float.NaN, false, SkyType.NONE, false, true);
     }
 
     @Override
