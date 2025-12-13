@@ -6,10 +6,12 @@ import dev.wolfieboy09.qtech.integration.kubejs.events.KubeEventHandlers;
 import dev.wolfieboy09.qtech.integration.kubejs.gas.KubeJSGasIngredients;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.loading.LoadingModList;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 import java.util.function.Consumer;
 
+@ApiStatus.Internal
 public class IntegrationLoader {
     private List<Pair<String, Consumer<IEventBus>>> listOfStuff;
     private static boolean constructed = false;
