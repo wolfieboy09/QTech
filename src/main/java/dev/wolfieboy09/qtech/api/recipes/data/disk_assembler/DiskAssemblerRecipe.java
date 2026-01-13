@@ -24,9 +24,9 @@ import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import java.util.List;
 
 @NothingNullByDefault
-public class DiskAssemblerStandardRecipe extends ProcessingRecipe<RecipeWrapper, DiskAssemblerRecipeParams> {
+public class DiskAssemblerRecipe extends ProcessingRecipe<RecipeWrapper, DiskAssemblerRecipeParams> {
 
-    public DiskAssemblerStandardRecipe(DiskAssemblerRecipeParams params) {
+    public DiskAssemblerRecipe(DiskAssemblerRecipeParams params) {
         super(QTRecipeTypes.DISK_ASSEMBLY, params);
     }
 
@@ -77,18 +77,13 @@ public class DiskAssemblerStandardRecipe extends ProcessingRecipe<RecipeWrapper,
         return extrasMatch && ingredientsMatch;
     }
 
-    @Override
-    public RecipeType<?> getType() {
-        return QTRecipeTypes.DISK_ASSEMBLY.getType();
-    }
-
     @FunctionalInterface
-    public interface Factory<R extends DiskAssemblerStandardRecipe>
+    public interface Factory<R extends DiskAssemblerRecipe>
             extends ProcessingRecipe.Factory<DiskAssemblerRecipeParams, R> {
         R create(DiskAssemblerRecipeParams params);
     }
 
-    public static class Builder<R extends DiskAssemblerStandardRecipe>
+    public static class Builder<R extends DiskAssemblerRecipe>
             extends ProcessingRecipeBuilder<DiskAssemblerRecipeParams, R, Builder<R>> {
 
         public Builder(Factory<R> factory, ResourceLocation recipeId) {
@@ -121,7 +116,7 @@ public class DiskAssemblerStandardRecipe extends ProcessingRecipe<RecipeWrapper,
         }
     }
 
-    public static class Serializer<R extends DiskAssemblerStandardRecipe>
+    public static class Serializer<R extends DiskAssemblerRecipe>
             implements RecipeSerializer<R> {
 
         private final MapCodec<R> codec;

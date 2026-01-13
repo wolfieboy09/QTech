@@ -3,9 +3,8 @@ package dev.wolfieboy09.qtech.api.datagen.builder;
 import dev.wolfieboy09.qtech.api.annotation.NothingNullByDefault;
 import dev.wolfieboy09.qtech.api.datagen.framework.ProcessingRecipeGen;
 import dev.wolfieboy09.qtech.api.recipes.IRecipeTypeInfo;
-import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingRecipe;
 import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingRecipeParams;
-import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingStandardRecipe;
+import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingRecipe;
 import dev.wolfieboy09.qtech.registries.QTRecipeTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -17,7 +16,7 @@ import net.minecraft.world.level.dimension.DimensionType;
 import java.util.concurrent.CompletableFuture;
 
 @NothingNullByDefault
-public abstract class VoidCraftingRecipeGen extends ProcessingRecipeGen<VoidCraftingRecipeParams, VoidCraftingRecipe, VoidCraftingStandardRecipe.Builder<VoidCraftingRecipe>> {
+public abstract class VoidCraftingRecipeGen extends ProcessingRecipeGen<VoidCraftingRecipeParams, VoidCraftingRecipe, VoidCraftingRecipe.Builder<VoidCraftingRecipe>> {
     public VoidCraftingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, String namespace) {
         super(output, registries, namespace);
     }
@@ -48,7 +47,7 @@ public abstract class VoidCraftingRecipeGen extends ProcessingRecipeGen<VoidCraf
     }
 
     @Override
-    protected VoidCraftingStandardRecipe.Builder<VoidCraftingRecipe> getBuilder(ResourceLocation id) {
-        return new VoidCraftingStandardRecipe.Builder<>(VoidCraftingRecipe::new, id);
+    protected VoidCraftingRecipe.Builder<VoidCraftingRecipe> getBuilder(ResourceLocation id) {
+        return new VoidCraftingRecipe.Builder<>(VoidCraftingRecipe::new, id);
     }
 }

@@ -5,13 +5,13 @@ import dev.wolfieboy09.qtech.api.annotation.NothingNullByDefault;
 import dev.wolfieboy09.qtech.api.recipes.IRecipeTypeInfo;
 import dev.wolfieboy09.qtech.api.recipes.ProcessingRecipe;
 import dev.wolfieboy09.qtech.api.recipes.StandardProcessingRecipe;
+import dev.wolfieboy09.qtech.api.recipes.data.centrifuge.CentrifugeRecipe;
+import dev.wolfieboy09.qtech.api.recipes.data.centrifuge.CentrifugeRecipeParams;
 import dev.wolfieboy09.qtech.api.recipes.data.disk_assembler.DiskAssemblerRecipeParams;
-import dev.wolfieboy09.qtech.api.recipes.data.disk_assembler.DiskAssemblerStandardRecipe;
-import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingRecipe;
+import dev.wolfieboy09.qtech.api.recipes.data.disk_assembler.DiskAssemblerRecipe;
 import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingRecipeParams;
-import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingStandardRecipe;
+import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingRecipe;
 import dev.wolfieboy09.qtech.api.util.ResourceHelper;
-import dev.wolfieboy09.qtech.block.disk_assembler.DiskAssemblerRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -31,7 +31,8 @@ import java.util.function.Supplier;
 @SuppressWarnings("unchecked")
 public enum QTRecipeTypes implements IRecipeTypeInfo, StringRepresentable {
     DISK_ASSEMBLY(DiskAssemblerRecipe::new),
-    VOID_CRAFTING(VoidCraftingRecipe::new);
+    VOID_CRAFTING(VoidCraftingRecipe::new),
+    CENTRIFUGE(CentrifugeRecipe::new);
 
     public final ResourceLocation id;
     public final Supplier<RecipeSerializer<?>> serializerSupplier;
@@ -67,12 +68,16 @@ public enum QTRecipeTypes implements IRecipeTypeInfo, StringRepresentable {
         this(() -> new StandardProcessingRecipe.Serializer<>(processingFactory));
     }
 
-    QTRecipeTypes(ProcessingRecipe.Factory<DiskAssemblerRecipeParams, ? extends DiskAssemblerStandardRecipe> processingFactory) {
-        this(() -> new DiskAssemblerStandardRecipe.Serializer<>(processingFactory));
+    QTRecipeTypes(DiskAssemblerRecipe.Factory<?> factory) {
+        this(() -> new DiskAssemblerRecipe.Serializer<>(factory));
     }
 
-    QTRecipeTypes(ProcessingRecipe.Factory<VoidCraftingRecipeParams, ? extends VoidCraftingStandardRecipe> processingFactory, byte... dummy) {
-        this(() -> new VoidCraftingStandardRecipe.Serializer<>(processingFactory));
+    QTRecipeTypes(VoidCraftingRecipe.Factory<?> factory) {
+        this(() -> new VoidCraftingRecipe.Serializer<>(factory));
+    }
+
+    QTRecipeTypes(CentrifugeRecipe.Factory<?> factory) {
+        this(() -> new CentrifugeRecipe.Serializer<>(factory));
     }
 
     @ApiStatus.Internal

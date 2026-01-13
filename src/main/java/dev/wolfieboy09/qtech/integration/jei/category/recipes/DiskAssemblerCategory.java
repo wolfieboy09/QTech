@@ -1,6 +1,6 @@
 package dev.wolfieboy09.qtech.integration.jei.category.recipes;
 
-import dev.wolfieboy09.qtech.block.disk_assembler.DiskAssemblerRecipe;
+import dev.wolfieboy09.qtech.api.recipes.data.disk_assembler.DiskAssemblerRecipe;
 import dev.wolfieboy09.qtech.integration.jei.category.QTRecipeCategory;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;

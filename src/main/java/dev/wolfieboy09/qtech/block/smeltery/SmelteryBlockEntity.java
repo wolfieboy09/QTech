@@ -340,7 +340,7 @@ public class SmelteryBlockEntity extends GlobalBlockEntity implements MenuProvid
             itemInputHandler.setStackInSlot(i, this.inventory.getStackInSlot(i));
             if (getFluidHandler() != null) recipeTanks.get(i).setFluid(getFluidHandler().getFluidInTank(i));
         }
-        CombinedRecipeInput input = new CombinedRecipeInput(recipeTanksHandler, itemInputHandler);
+        CombinedRecipeInput input = new CombinedRecipeInput(recipeTanksHandler, itemInputHandler, null);
         RecipeManager recipes = this.level.getRecipeManager();
         RecipeHolder<SmelteryRecipe> recipeFound = recipes.getRecipeFor(
                 QTRecipes.SMELTERY_RECIPE_TYPE.get(),

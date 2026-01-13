@@ -14,8 +14,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * <b>This class is just the normal stuff for capability registration.
@@ -57,6 +61,24 @@ public class QTInternalCapabilities {
                 );
             }
         }
+
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                QTBlockEntities.ITEM_INPUT_HATCH.get(),
+                (hatch, dir) -> {
+                    List<IItemHandler> caps = hatch.getCapabilities();
+                    return caps.isEmpty() ? null : caps.getFirst();
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                QTBlockEntities.ENERGY_INPUT_HATCH.get(),
+                (hatch, dir) -> {
+                    List<IEnergyStorage> caps = hatch.getCapabilities();
+                    return caps.isEmpty() ? null : caps.getFirst();
+                }
+        );
     }
 
     public record GasItemHandlerWrapper(ItemStack itemStack, GasCanisterComponent handler) implements IGasHandlerItem {

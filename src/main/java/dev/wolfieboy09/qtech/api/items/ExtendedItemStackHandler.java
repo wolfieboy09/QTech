@@ -8,6 +8,12 @@ public class ExtendedItemStackHandler extends ItemStackHandler {
     private final IntConsumer consumer;
     private final Runnable runnable;
 
+    public ExtendedItemStackHandler(int size) {
+        super(size);
+        this.consumer = null;
+        this.runnable = null;
+    }
+
     public ExtendedItemStackHandler(int size, IntConsumer callback) {
         super(size);
         this.consumer = callback;

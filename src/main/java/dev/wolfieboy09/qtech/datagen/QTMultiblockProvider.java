@@ -14,7 +14,6 @@ public class QTMultiblockProvider extends MultiblockPatternProvider {
 
     @Override
     protected void registerPatterns() {
-        //TODO: Make a block for the centrifuge (machine casing and other stuff)
         add(create("centrifuge", QTMultiblockTypes.CENTRIFUGE)
                 .controller(QTBlocks.CENTRIFUGE_CONTROLLER)
                 .key('B', Blocks.BRICKS)

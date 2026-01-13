@@ -2,11 +2,11 @@ package dev.wolfieboy09.qtech.integration.jei;
 
 import dev.wolfieboy09.qtech.QuantiumizedTech;
 import dev.wolfieboy09.qtech.api.annotation.NothingNullByDefault;
+import dev.wolfieboy09.qtech.api.recipes.data.disk_assembler.DiskAssemblerRecipe;
 import dev.wolfieboy09.qtech.api.recipes.data.void_crafting.VoidCraftingRecipe;
 import dev.wolfieboy09.qtech.api.registry.QTRegistries;
 import dev.wolfieboy09.qtech.api.registry.gas.Gas;
 import dev.wolfieboy09.qtech.api.util.ResourceHelper;
-import dev.wolfieboy09.qtech.block.disk_assembler.DiskAssemblerRecipe;
 import dev.wolfieboy09.qtech.integration.jei.category.EmptyBackground;
 import dev.wolfieboy09.qtech.integration.jei.category.QTRecipeCategory;
 import dev.wolfieboy09.qtech.integration.jei.category.recipes.DiskAssemblerCategory;

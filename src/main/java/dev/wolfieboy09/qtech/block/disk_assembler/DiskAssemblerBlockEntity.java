@@ -2,6 +2,7 @@ package dev.wolfieboy09.qtech.block.disk_assembler;
 
 import dev.wolfieboy09.qtech.QuantiumizedTech;
 import dev.wolfieboy09.qtech.api.items.ExtendedItemStackHandler;
+import dev.wolfieboy09.qtech.api.recipes.data.disk_assembler.DiskAssemblerRecipe;
 import dev.wolfieboy09.qtech.block.AbstractEnergyBlockEntity;
 import dev.wolfieboy09.qtech.registries.QTBlockEntities;
 import dev.wolfieboy09.qtech.registries.QTRecipeTypes;

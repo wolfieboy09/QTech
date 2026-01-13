@@ -10,6 +10,7 @@ import dev.wolfieboy09.qtech.api.recipes.result.FluidStackChanceResult;
 import dev.wolfieboy09.qtech.api.recipes.result.GasStackChanceResult;
 import dev.wolfieboy09.qtech.api.recipes.result.ItemStackChanceResult;
 import dev.wolfieboy09.qtech.api.registry.gas.GasStack;
+import dev.wolfieboy09.qtech.api.util.TriEither;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -175,6 +176,22 @@ public abstract class ProcessingRecipe<I extends RecipeInput, P extends Processi
 
     public IRecipeTypeInfo getTypeInfo() {
         return typeInfo;
+    }
+
+    @Override
+    public RecipeType<?> getType() {
+        return this.type;
+    }
+
+    /**
+     * @return A {@link List} of {@link TriEither} containing one of three ingredient types: {@link SizedIngredient}, {@link SizedFluidIngredient}, or {@link SizedGasIngredient}
+     */
+    public List<TriEither<SizedIngredient, SizedFluidIngredient, SizedGasIngredient>> getCombinedIngredients() {
+        List<TriEither<SizedIngredient, SizedFluidIngredient, SizedGasIngredient>> combined = new ArrayList<>();
+        this.ingredients.forEach((i) -> combined.add(TriEither.left(i)));
+        this.fluidIngredients.forEach((i) -> combined.add(TriEither.middle(i)));
+        this.gasIngredients.forEach((i) -> combined.add(TriEither.right(i)));
+        return combined;
     }
 
     @OverridingMethodsMustInvokeSuper
