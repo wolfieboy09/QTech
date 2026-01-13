@@ -10,7 +10,6 @@ import dev.wolfieboy09.qtech.registries.QTDamageTypes;
 import dev.wolfieboy09.qtech.registries.QTDataMaps;
 import dev.wolfieboy09.qtech.registries.QTDimensions;
 import dev.wolfieboy09.qtech.registries.QTParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;

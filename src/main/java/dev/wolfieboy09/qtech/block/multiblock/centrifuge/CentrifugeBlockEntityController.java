@@ -23,9 +23,6 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CentrifugeBlockEntityController extends BaseMultiblockControllerEntity {
     private final Component TITLE = Component.translatable("block.qtech.centrifuge_controller");
     private int progress = 0;
